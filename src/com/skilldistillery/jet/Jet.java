@@ -1,26 +1,30 @@
 package com.skilldistillery.jet;
 
 public abstract class Jet {
-	private String model;
-	private double speed;
-	private int range;
-	private long price;
-	
+	protected String model;
+	protected double speed;
+	protected int range;
+	protected long price;
+
 	public Jet(String model, double speed, int range, long price) {
 		this.model = model;
 		this.speed = speed;
 		this.range = range;
 		this.price = price;
 	}
-	
+
 	public void fly() {
-		
+		if (this.range == 0 || this.speed == 0){
+			System.out.println("\tThis aircraft is down for maintenance");
+		} else{
+			double flightTime = this.range / this.speed;
+			System.out.printf("\tMax flight time: %.2f hours\n", flightTime);
+		}
 	}
-	
+
 	public double getSpeedInMach() {
 		return 0;
 	}
-
 
 	public String getModel() {
 		return model;
@@ -53,10 +57,9 @@ public abstract class Jet {
 	public void setPrice(long price) {
 		this.price = price;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Jet [model=" + model + ", speed=" + speed + ", range=" + range + ", price=" + price + "]";
 	}
-
 }
